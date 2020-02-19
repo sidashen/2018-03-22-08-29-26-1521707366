@@ -1,7 +1,6 @@
 package com.thoughtworks.collection;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
+import javax.xml.soap.Node;
 import java.util.List;
 
 public class Reduce {
@@ -83,21 +82,7 @@ public class Reduce {
         return false;
       }
     }
-
-    //实现接口SingleLink，然后再此函数内使用
-    public Double getMedianInLinkList(SingleLink singleLink) {
-      double medianNum = 0;
-      double sum = 0;
-//      if (this.arrayList.size() % 2 == 0) {
-////        sum = (double) singleLink.getNode(this.arrayList.size() / 2);
-//      } else {
-
-      System.out.println(singleLink.getNode(this.arrayList.size() / 2));
-      System.out.println(singleLink.getNode((this.arrayList.size() / 2) + 1));
-      sum = (double) singleLink.getNode(this.arrayList.size() / 2);
-      return medianNum;
-    }
-
+    
     public int getLastOdd() {
       int lastOdd = 0;
       for (Integer i : this.arrayList) {

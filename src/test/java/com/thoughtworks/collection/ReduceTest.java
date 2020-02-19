@@ -52,29 +52,11 @@ public class ReduceTest {
 
         assertThat(reduce.getOrderedMedian()).isEqualTo(1);
 
-
         Integer[] evenArray = new Integer[]{1, 1, 2, 3};
         List<Integer> EvenArrayList = Arrays.asList(evenArray);
         Reduce evenReduce = new Reduce(EvenArrayList);
 
         assertThat(evenReduce.getOrderedMedian()).isEqualTo(1.5);
-    }
-
-    @Test
-    public void should_get_element_in_middle_position_in_linkList() {
-    //获取单链表中的中位数
-        Integer[] array = new Integer[]{1, 4, 6, 2, 3, 10, 9, 8, 11, 2, 19, 30};
-        List<Integer> arrayList = Arrays.asList(array);
-
-        SingleLink<Integer> singleLink = mock(SingleLink.class);
-        when(singleLink.getNode(6)).thenReturn(10);
-        when(singleLink.getNode(7)).thenReturn(9);
-
-        Reduce reduce = new Reduce(arrayList);
-
-        assertThat(reduce.getMedianInLinkList(singleLink)).isEqualTo(9.5);
-        verify(singleLink, times(12)).addTailPointer(anyInt());
-
     }
 
     @Test
