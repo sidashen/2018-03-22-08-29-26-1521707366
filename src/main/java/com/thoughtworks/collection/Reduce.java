@@ -82,7 +82,7 @@ public class Reduce {
         return false;
       }
     }
-    
+
     public int getLastOdd() {
       int lastOdd = 0;
       for (Integer i : this.arrayList) {

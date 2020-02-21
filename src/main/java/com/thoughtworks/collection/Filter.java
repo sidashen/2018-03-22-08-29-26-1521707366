@@ -35,14 +35,9 @@ public class Filter {
     }
 
     public List<Integer> getCommonElements(List<Integer> firstList, List<Integer> secondList) {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer i : firstList) {
-        for (Integer j : secondList) {
-          if (i == j) {
-            newList.add(i);
-          }
-        }
-      }
+      List<Integer> newList = new ArrayList<>(firstList);
+      List<Integer> anotherList = new ArrayList<>(secondList);
+      newList.retainAll(anotherList);
       return newList;
     }
 
