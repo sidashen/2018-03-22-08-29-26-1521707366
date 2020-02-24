@@ -1,6 +1,8 @@
 package com.thoughtworks.collection;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Add {
     public int getSumOfEvens(int leftBorder, int rightBorder) {
@@ -65,12 +67,8 @@ public class Add {
     }
 
     public double getMedianOfEvenIndex(List<Integer> arrayList) {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer integer : arrayList) {
-        if (integer % 2 == 0) {
-          newList.add(integer);
-        }
-      }
+      Stream<Integer> newStream = arrayList.stream().filter((e) -> e % 2 == 0);
+      List<Integer> newList = newStream.collect(Collectors.toList());
 
       double medianNum;
       if (newList.size() % 2 == 0) {
