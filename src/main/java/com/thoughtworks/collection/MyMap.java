@@ -19,10 +19,7 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-      List<Integer> newList = this.array.stream()
-                                  .map((e) -> e * 3)
-                                  .collect(toList());
-      return newList;
+      return this.array.stream().map((e) -> e * 3).collect(toList());
     }
 
     public List<String> mapLetter() {
@@ -57,9 +54,6 @@ public class MyMap {
     }
 
     public List<Integer> sortFromSmall() {
-      List<Integer> newList = new ArrayList<>();
-      Collections.sort(this.array);
-      newList.addAll(this.array);
-      return newList;
+      return this.array.stream().sorted().collect(toList());
     }
 }
