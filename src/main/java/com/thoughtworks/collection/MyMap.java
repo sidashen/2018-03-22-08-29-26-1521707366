@@ -27,9 +27,8 @@ public class MyMap {
 
     public List<String> mapLetter() {
       List<String> newList = new ArrayList<>();
-      for (Integer i : this.array) {
-        char letter = (char) (i + 96);
-        newList.add(String.valueOf(letter));
+      for (int i = 0; i < this.array.size(); i++) {
+        newList.add(letterList.get(i));
       }
       return newList;
     }
