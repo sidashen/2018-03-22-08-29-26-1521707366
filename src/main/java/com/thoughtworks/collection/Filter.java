@@ -16,19 +16,17 @@ public class Filter {
 
     public List<Integer> filterEven() {
       List<Integer> newList = this.array
-                                    .stream()
-                                    .filter((e) -> e % 2 == 0)
-                                    .collect(Collectors.toList());
+                                  .stream()
+                                  .filter((e) -> e % 2 == 0)
+                                  .collect(Collectors.toList());
       return newList;
     }
 
     public List<Integer> filterMultipleOfThree() {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer i : this.array) {
-        if (i % 3 == 0) {
-          newList.add(i);
-        }
-      }
+      List<Integer> newList = this.array
+                                  .stream()
+                                  .filter((e) -> e % 3 == 0)
+                                  .collect(Collectors.toList());
       return newList;
     }
 
@@ -40,12 +38,7 @@ public class Filter {
     }
 
     public List<Integer> getDifferentElements() {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer integer : this.array) {
-        if (!newList.contains(integer)) {
-          newList.add(integer);
-        }
-      }
+      List<Integer> newList = this.array.stream().distinct().collect(Collectors.toList());
       return newList;
     }
 }
