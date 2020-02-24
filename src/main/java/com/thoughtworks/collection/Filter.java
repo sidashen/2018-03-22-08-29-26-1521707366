@@ -1,10 +1,10 @@
 package com.thoughtworks.collection;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Filter {
 
@@ -15,12 +15,10 @@ public class Filter {
     }
 
     public List<Integer> filterEven() {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer i : this.array) {
-        if (i % 2 == 0) {
-          newList.add(i);
-        }
-      }
+      List<Integer> newList = this.array
+                                    .stream()
+                                    .filter((e) -> e % 2 == 0)
+                                    .collect(Collectors.toList());
       return newList;
     }
 
