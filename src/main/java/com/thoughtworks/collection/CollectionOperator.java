@@ -2,9 +2,15 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
 
 public class CollectionOperator {
     public List<Integer> getListByInterval(int left, int right) {
@@ -40,12 +46,10 @@ public class CollectionOperator {
     }
 
     public List<Integer> popEvenElments(int[] array) {
-      List<Integer> newList = new ArrayList<>();
-      for (int i : array) {
-        if ((i % 2) == 0) {
-          newList.add(i);
-        }
-      }
+      List<Integer> newList = Arrays.stream(array)
+                                    .boxed()
+                                    .filter((e) -> e % 2 == 0)
+                                    .collect(Collectors.toList());
       return newList;
     }
 
@@ -54,15 +58,14 @@ public class CollectionOperator {
     }
 
     public List<Integer> popCommonElement(int[] firstArray, int[] secondArray) {
-      List<Integer> newList = new ArrayList<>();
-      for (int i : firstArray) {
-        for (int j : secondArray) {
-          if (i == j) {
-            newList.add(i);
-          }
-        }
-      }
-      return newList;
+      List<Integer> firstList = Arrays.stream(firstArray)
+                                      .boxed()
+                                      .collect(Collectors.toList());
+      List<Integer> secondList = Arrays.stream(secondArray)
+                                       .boxed()
+                                       .collect(Collectors.toList());
+      firstList.retainAll(secondList);
+      return firstList;
     }
 
     public List<Integer> addUncommonElement(Integer[] firstArray, Integer[] secondArray) {
