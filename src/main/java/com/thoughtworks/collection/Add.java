@@ -38,16 +38,9 @@ public class Add {
     }
 
     public int getSumTripleAndAddTwo(List<Integer> arrayList) {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer integer : arrayList) {
-        int num = integer * 3 + 2;
-        newList.add(num);
-      }
-
-      int sum = 0;
-      for (Integer i : newList) {
-        sum += i;
-      }
+      int sum = arrayList.stream()
+                         .map((e) -> 3 * e + 2)
+                         .reduce(0, (a, b) -> a + b);;
       return sum;
     }
 
