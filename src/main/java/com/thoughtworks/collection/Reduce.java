@@ -2,6 +2,8 @@ package com.thoughtworks.collection;
 
 import javax.xml.soap.Node;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Reduce {
 
@@ -54,14 +56,10 @@ public class Reduce {
     }
 
     public int getFirstEven() {
-      int firstEven = 0;
-      for (Integer i : this.arrayList) {
-        if (i % 2 == 0) {
-          firstEven = i;
-          break;
-        }
-      }
-      return firstEven;
+      return this.arrayList.stream()
+                           .filter((e) -> e % 2 == 0)
+                           .findFirst()
+                           .get();
     }
 
     public int getIndexOfFirstEven() {
