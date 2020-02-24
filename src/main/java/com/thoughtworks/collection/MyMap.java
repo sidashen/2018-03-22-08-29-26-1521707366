@@ -50,9 +50,9 @@ public class MyMap {
     }
 
     public List<Integer> sortFromBig() {
-      List<Integer> newList = new ArrayList<>();
-      Collections.sort(this.array, Comparator.reverseOrder());
-      newList.addAll(this.array);
+      List<Integer> newList = this.array.stream()
+                                  .sorted((e1, e2) -> -Integer.compare(e1, e2))
+                                  .collect(toList());
       return newList;
     }
 
