@@ -93,24 +93,16 @@ public class Add {
     }
 
     public boolean isIncludedInEvenIndex(List<Integer> arrayList, Integer specialElment) {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer integer : arrayList) {
-        if (integer % 2 == 0) {
-          newList.add(integer);
-        }
-      }
-
+      Stream<Integer> stream = arrayList.stream().filter((e) -> e % 2 == 0);
+      List<Integer> newList = stream.collect(Collectors.toList());
       return newList.contains(specialElment);
     }
 
     public List<Integer> getUnrepeatedFromEvenIndex(List<Integer> arrayList) {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer integer : arrayList) {
-        if (integer % 2 == 0 && ! newList.contains(integer)) {
-          newList.add(integer);
-        }
-      }
-      return newList;
+      Stream<Integer> stream = arrayList.stream()
+                                        .filter((e) -> e % 2 == 0)
+                                        .distinct();
+      return stream.collect(Collectors.toList());
     }
 
     public List<Integer> sortByEvenAndOdd(List<Integer> arrayList) {
