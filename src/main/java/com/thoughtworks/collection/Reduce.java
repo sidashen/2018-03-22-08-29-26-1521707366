@@ -22,13 +22,8 @@ public class Reduce {
     }
 
     public double getAverage() {
-      double averageNum = 0;
-      double sum = 0;
-      for (Integer i : this.arrayList) {
-        sum += i;
-      }
-      averageNum = sum / this.arrayList.size();
-      return averageNum;
+      double sum = this.arrayList.stream().reduce(0, Integer::sum);
+      return sum / this.arrayList.size();
     }
 
     public double getOrderedMedian() {
