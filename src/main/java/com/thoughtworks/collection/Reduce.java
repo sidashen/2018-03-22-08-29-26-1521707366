@@ -18,13 +18,7 @@ public class Reduce {
     }
 
     public double getMinimum() {
-      int minNum = this.arrayList.get(0);
-      for (Integer i : this.arrayList) {
-        if (minNum > i) {
-          minNum = i;
-        }
-      }
-      return minNum;
+      return this.arrayList.stream().min(Integer::compare).get();
     }
 
     public double getAverage() {
