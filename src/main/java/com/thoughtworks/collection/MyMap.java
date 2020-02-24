@@ -47,10 +47,7 @@ public class MyMap {
     }
 
     public List<Integer> sortFromBig() {
-      List<Integer> newList = this.array.stream()
-                                  .sorted((e1, e2) -> -Integer.compare(e1, e2))
-                                  .collect(toList());
-      return newList;
+      return this.array.stream().sorted((e1, e2) -> -Integer.compare(e1, e2)).collect(toList());
     }
 
     public List<Integer> sortFromSmall() {
