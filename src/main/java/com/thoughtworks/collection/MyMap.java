@@ -3,6 +3,9 @@ package com.thoughtworks.collection;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class MyMap {
 
@@ -16,10 +19,9 @@ public class MyMap {
     }
 
     public List<Integer> getTriple() {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer i : this.array) {
-        newList.add(i * 3);
-      }
+      List<Integer> newList = this.array.stream()
+                                  .map((e) -> e * 3)
+                                  .collect(toList());
       return newList;
     }
 
