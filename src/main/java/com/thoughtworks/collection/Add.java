@@ -93,8 +93,9 @@ public class Add {
     }
 
     public boolean isIncludedInEvenIndex(List<Integer> arrayList, Integer specialElment) {
-      Stream<Integer> stream = arrayList.stream().filter((e) -> e % 2 == 0);
-      List<Integer> newList = stream.collect(Collectors.toList());
+      List<Integer> newList = arrayList.stream()
+                                       .filter((e) -> e % 2 == 0)
+                                       .collect(Collectors.toList());
       return newList.contains(specialElment);
     }
 
@@ -106,7 +107,10 @@ public class Add {
     }
 
     public List<Integer> sortByEvenAndOdd(List<Integer> arrayList) {
-      List<Integer> evenList = new ArrayList<>();
+      List<Integer> evenList = arrayList.stream()
+                                            .filter((e) -> e % 2 == 0)
+                                            .collect(Collectors.toList());
+
       List<Integer> oddList = new ArrayList<>();
       List<Integer> newList = new ArrayList<>();
       for (Integer integer : arrayList) {
