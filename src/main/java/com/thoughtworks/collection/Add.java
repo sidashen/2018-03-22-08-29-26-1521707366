@@ -59,11 +59,11 @@ public class Add {
     }
 
     public int getSumOfProcessedOdds(List<Integer> arrayList) {
-      int sum = arrayList.stream()
+      int sumNum = arrayList.stream()
                          .filter((e) -> e % 2 != 0)
                          .map((e) -> e * 3 + 5)
-                         .reduce(0, (a, b) -> a + b);
-      return sum;
+                         .reduce(0, Integer::sum);
+      return sumNum;
     }
 
     public double getMedianOfEvenIndex(List<Integer> arrayList) {
@@ -84,18 +84,12 @@ public class Add {
     }
 
     public double getAverageOfEvenIndex(List<Integer> arrayList) {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer integer : arrayList) {
-        if (integer % 2 == 0) {
-          newList.add(integer);
-        }
-      }
-
-      double sum = 0;
-      for (Integer i : newList) {
-        sum += i;
-      }
-      return sum / newList.size();
+      Stream<Integer> stream = arrayList.stream().filter((e) -> e % 2 == 0);
+      List<Integer> newList = stream.collect(Collectors.toList());
+      double sumNum = arrayList.stream()
+                               .filter((e) -> e % 2 == 0)
+                               .reduce(0, Integer::sum);
+      return sumNum / newList.size();
     }
 
     public boolean isIncludedInEvenIndex(List<Integer> arrayList, Integer specialElment) {
