@@ -14,13 +14,7 @@ public class Reduce {
     }
 
     public int getMaximum() {
-      int maxNum = 0;
-      for (Integer i : this.arrayList) {
-        if (i > maxNum) {
-          maxNum = i;
-        }
-      }
-      return maxNum;
+      return this.arrayList.stream().max(Integer::compare).get();
     }
 
     public double getMinimum() {
