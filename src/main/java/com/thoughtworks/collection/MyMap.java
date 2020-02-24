@@ -38,10 +38,10 @@ public class MyMap {
       String letter = "";
       for (Integer i : this.array) {
         if (i <= 26) {
-          letter = String.valueOf((char) (i + 96));
+          letter = letterList.get(i - 1);
         } else {
-          String formerLetter = String.valueOf((char) (Math.floor((i - 1) / 26) + 96));
-          String latterLetter = String.valueOf((char) ((i - 1 ) % 26 + 1 + 96));
+          String formerLetter = letterList.get((i - 1) / 26 - 1);
+          String latterLetter = letterList.get((i - 1 ) % 26);
           letter = formerLetter + latterLetter;
         }
         newList.add(letter);
