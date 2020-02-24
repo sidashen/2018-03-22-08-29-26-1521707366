@@ -57,18 +57,10 @@ public class Add {
     }
 
     public int getSumOfProcessedOdds(List<Integer> arrayList) {
-      List<Integer> newList = new ArrayList<>();
-      for (Integer integer : arrayList) {
-        if (integer % 2 != 0) {
-          int num = integer * 3 + 5;
-          newList.add(num);
-        }
-      }
-
-      int sum = 0;
-      for (Integer i : newList) {
-        sum += i;
-      }
+      int sum = arrayList.stream()
+                         .filter((e) -> e % 2 != 0)
+                         .map((e) -> e * 3 + 5)
+                         .reduce(0, (a, b) -> a + b);
       return sum;
     }
 
