@@ -65,13 +65,10 @@ public class Reduce {
     }
 
     public int getLastOdd() {
-      int lastOdd = 0;
-      for (Integer i : this.arrayList) {
-        if (i % 2 != 0) {
-          lastOdd = i;
-        }
-      }
-      return lastOdd;
+      List<Integer> newList = this.arrayList.stream()
+                                  .filter((e) -> e % 2 != 0)
+                                  .collect(Collectors.toList());
+      return newList.get(newList.size() - 1);
     }
 
     public int getIndexOfLastOdd() {
