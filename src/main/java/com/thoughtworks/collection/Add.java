@@ -108,21 +108,14 @@ public class Add {
 
     public List<Integer> sortByEvenAndOdd(List<Integer> arrayList) {
       List<Integer> evenList = arrayList.stream()
-                                            .filter((e) -> e % 2 == 0)
-                                            .collect(Collectors.toList());
-
-      List<Integer> oddList = new ArrayList<>();
+                                        .filter((e) -> e % 2 == 0)
+                                        .sorted()
+                                        .collect(Collectors.toList());
+      List<Integer> oddList = arrayList.stream()
+                                       .filter((e) -> e % 2 != 0)
+                                       .sorted((e1, e2) -> -Integer.compare(e1, e2))
+                                       .collect(Collectors.toList());
       List<Integer> newList = new ArrayList<>();
-      for (Integer integer : arrayList) {
-        if (integer % 2 == 0) {
-          evenList.add(integer);
-        } else {
-          oddList.add(integer);
-        }
-      }
-
-      Collections.sort(evenList);
-      oddList.sort(Comparator.reverseOrder());
       newList.addAll(evenList);
       newList.addAll(oddList);
       return newList;
