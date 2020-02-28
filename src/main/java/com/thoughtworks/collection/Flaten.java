@@ -1,6 +1,7 @@
 package com.thoughtworks.collection;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Flaten {
@@ -12,20 +13,18 @@ public class Flaten {
 
     public List<Integer> transformToOneDimesional() {
       List<Integer> newList = new ArrayList<>();
-      for (int i = 0; i < this.array.length; i++) {
-        for (int j = 0; j < this.array[i].length; j++) {
-          newList.add(this.array[i][j]);
-        }
+      for (Integer[] integers : this.array) {
+        Collections.addAll(newList, integers);
       }
       return newList;
     }
 
     public List<Integer> transformToUnrepeatedOneDimesional() {
       List<Integer> newList = new ArrayList<>();
-      for (int i = 0; i < this.array.length; i++) {
-        for (int j = 0; j < this.array[i].length; j++) {
-          if (!newList.contains(this.array[i][j])) {
-            newList.add(this.array[i][j]);
+      for (Integer[] integers : this.array) {
+        for (Integer integer : integers) {
+          if (!newList.contains(integer)) {
+            newList.add(integer);
           }
         }
       }

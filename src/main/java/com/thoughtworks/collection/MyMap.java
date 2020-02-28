@@ -1,7 +1,5 @@
 package com.thoughtworks.collection;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.*;
 
 public class MyMap {
@@ -39,7 +37,7 @@ public class MyMap {
         if (i <= 26) {
           letter = String.valueOf((char) (i + 96));
         } else {
-          String formerLetter = String.valueOf((char) (Math.floor((i - 1) / 26) + 96));
+          String formerLetter = String.valueOf((char) ((i - 1) / 26 + 96));
           String latterLetter = String.valueOf((char) ((i - 1 ) % 26 + 1 + 96));
           letter = formerLetter + latterLetter;
         }
@@ -49,16 +47,12 @@ public class MyMap {
     }
 
     public List<Integer> sortFromBig() {
-      List<Integer> newList = new ArrayList<>();
-      Collections.sort(this.array, Comparator.reverseOrder());
-      newList.addAll(this.array);
-      return newList;
+      this.array.sort(Comparator.reverseOrder());
+      return new ArrayList<>(this.array);
     }
 
     public List<Integer> sortFromSmall() {
-      List<Integer> newList = new ArrayList<>();
       Collections.sort(this.array);
-      newList.addAll(this.array);
-      return newList;
+      return new ArrayList<>(this.array);
     }
 }
